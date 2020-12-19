@@ -5,17 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieDetailsListener {
 
-    private val fragmentMoviesList =
-        FragmentMoviesList().apply { setMovieDetailsListener(this@MainActivity) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().apply {
-            add(R.id.persistent_container, fragmentMoviesList)
-            addToBackStack(null)
-            commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().apply {
+                add(R.id.persistent_container, FragmentMoviesList())
+                commit()
+            }
         }
     }
 

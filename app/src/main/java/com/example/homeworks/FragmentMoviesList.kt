@@ -28,10 +28,6 @@ class FragmentMoviesList : Fragment() {
         }
     }
 
-    fun setMovieDetailsListener(movieDetailsListener: MovieDetailsListener?){
-        listener = movieDetailsListener
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is MovieDetailsListener){

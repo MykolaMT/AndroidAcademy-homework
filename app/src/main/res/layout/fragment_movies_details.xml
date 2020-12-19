@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#191926"
-    tools:context=".MovieDetailsActivity">
+    android:background="#191926">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,14 +14,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="16sp" />
+            app:layout_constraintGuide_begin="16dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/right_edge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="16sp" />
+            app:layout_constraintGuide_end="16dp" />
 
         <ImageView
             android:id="@+id/main_poster"
@@ -37,8 +35,8 @@
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18sp"
-            android:layout_marginTop="59sp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="59dp"
             android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -84,47 +82,47 @@
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="4sp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
             app:layout_constraintEnd_toEndOf="@+id/right_edge"
             app:layout_constraintTop_toBottomOf="@+id/tags">
 
             <ImageView
                 android:id="@+id/star_1"
-                android:layout_width="16sp"
+                android:layout_width="16dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_star_filled"/>
             <ImageView
                 android:id="@+id/star_2"
-                android:layout_width="16sp"
+                android:layout_width="16dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_star_filled"/>
             <ImageView
                 android:id="@+id/star_3"
-                android:layout_width="16sp"
+                android:layout_width="16dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_star_filled"/>
             <ImageView
                 android:id="@+id/star_4"
-                android:layout_width="16sp"
+                android:layout_width="16dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_star_filled"/>
 
             <ImageView
                 android:id="@+id/star_5"
-                android:layout_width="16sp"
+                android:layout_width="16dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_star_empty"/>
             <TextView
                 android:id="@+id/reviews_stats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="9sp"
+                android:layout_marginStart="9dp"
                 android:textColor="@color/grey"
                 android:text="125 REVIEWS"
                 />
@@ -171,7 +169,7 @@
 
         <ImageView
             android:id="@+id/actor1"
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ironman"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
@@ -194,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/captain"
-            android:paddingLeft="8sp"
+            android:paddingLeft="8dp"
             app:layout_constraintStart_toEndOf="@+id/actor1"
             app:layout_constraintTop_toBottomOf="@+id/cast_header" />
         <TextView
@@ -214,9 +212,9 @@
             android:id="@+id/actor3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8sp"
+            android:layout_marginRight="8dp"
             android:src="@drawable/hulk"
-            android:paddingLeft="8sp"
+            android:paddingLeft="8dp"
             app:layout_constraintStart_toEndOf="@+id/actor2"
             app:layout_constraintTop_toBottomOf="@+id/cast_header" />
         <TextView
@@ -236,9 +234,9 @@
             android:id="@+id/actor4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8sp"
+            android:layout_marginRight="8dp"
             android:src="@drawable/thor"
-            android:paddingLeft="8sp"
+            android:paddingLeft="8dp"
             app:layout_constraintStart_toEndOf="@+id/actor3"
             app:layout_constraintTop_toBottomOf="@+id/cast_header" />
         <TextView

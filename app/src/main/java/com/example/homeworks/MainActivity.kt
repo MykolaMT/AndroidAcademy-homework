@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieDetailsListene
         }
     }
 
-    override fun openMovie() {
+    override fun openMovie(movie: Movie) {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.persistent_container, FragmentMoviesDetails())
+            replace(R.id.persistent_container, FragmentMoviesDetails(movie))
             addToBackStack(null)
             commit()
         }

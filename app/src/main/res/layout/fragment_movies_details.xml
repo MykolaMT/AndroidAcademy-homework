@@ -25,10 +25,10 @@
 
         <ImageView
             android:id="@+id/main_poster"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="375dp"
+            android:layout_height="298dp"
             android:background="@drawable/avengers"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/left_edge"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="@+id/left_edge" />
 
         <TextView
-            android:id="@+id/tags"
+            android:id="@+id/genre"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4sp"
@@ -85,7 +85,7 @@
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
             app:layout_constraintEnd_toEndOf="@+id/right_edge"
-            app:layout_constraintTop_toBottomOf="@+id/tags">
+            app:layout_constraintTop_toBottomOf="@+id/genre">
 
             <ImageView
                 android:id="@+id/star_1"
@@ -142,7 +142,7 @@
             app:layout_constraintTop_toBottomOf="@+id/reviews_layout" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/storyline"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:gravity="bottom"
@@ -165,7 +165,7 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
             app:layout_constraintEnd_toStartOf="@+id/right_edge"
-            app:layout_constraintTop_toBottomOf="@+id/description" />
+            app:layout_constraintTop_toBottomOf="@+id/storyline" />
 
         <ImageView
             android:id="@+id/actor1"
@@ -174,7 +174,7 @@
             android:src="@drawable/ironman"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
             app:layout_constraintTop_toBottomOf="@+id/cast_header" />
-        />
+
         <TextView
             android:id="@+id/actor1_name"
             android:layout_width="0sp"

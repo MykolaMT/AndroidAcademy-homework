@@ -28,12 +28,6 @@ class FragmentMoviesDetails(private val movie: Movie) : Fragment() {
         var ageRatingView = view.findViewById<TextView>(R.id.age_restriction)
         var detailsPosterView = view.findViewById<ImageView>(R.id.main_poster)
 
-        var star1View = view.findViewById<ImageView>(R.id.star_1)
-        var star2View = view.findViewById<ImageView>(R.id.star_2)
-        var star3View = view.findViewById<ImageView>(R.id.star_3)
-        var star4View = view.findViewById<ImageView>(R.id.star_4)
-        var star5View = view.findViewById<ImageView>(R.id.star_5)
-
         nameView.text = movie.name
         genreView.text = movie.genre
         reviewStatsView.text = "${movie.reviewsNumber} REVIEWS"
@@ -42,19 +36,21 @@ class FragmentMoviesDetails(private val movie: Movie) : Fragment() {
 
         detailsPosterView.setBackgroundResource(movie.details_poster)
 
-        SetStar(star1View, movie.stars >= 1)
-        SetStar(star2View, movie.stars >= 2)
-        SetStar(star3View, movie.stars >= 3)
-        SetStar(star4View, movie.stars >= 4)
-        SetStar(star5View, movie.stars == 5)
+        SetStar(view, R.id.star_1, movie.stars >= 1)
+        SetStar(view, R.id.star_2, movie.stars >= 2)
+        SetStar(view, R.id.star_3, movie.stars >= 3)
+        SetStar(view, R.id.star_4, movie.stars >= 4)
+        SetStar(view, R.id.star_5, movie.stars == 5)
+
     }
 
-    private fun SetStar(star: ImageView , isFilled: Boolean)
+    private fun SetStar(movieView: View, starViewId: Int , isFilled: Boolean)
     {
+        var starView = movieView.findViewById<ImageView>(starViewId)
         if(isFilled)
-            star.setImageResource(R.drawable.ic_star_filled)
+            starView.setImageResource(R.drawable.ic_star_filled)
         else
-            star.setImageResource(R.drawable.ic_star_empty)
+            starView.setImageResource(R.drawable.ic_star_empty)
     }
 }
 

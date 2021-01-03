@@ -22,7 +22,8 @@
         android:layout_marginStart="16dp"
         android:background="@drawable/ic_movies_list"
         app:layout_constraintStart_toStartOf="@+id/persistent_container"
-        app:layout_constraintTop_toTopOf="@+id/persistent_container" />
+        app:layout_constraintTop_toTopOf="@+id/persistent_container"
+        android:contentDescription="@string/movies_list_header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_view"

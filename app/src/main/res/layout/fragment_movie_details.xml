@@ -26,14 +26,15 @@
 
         <ImageView
             android:id="@+id/backdrop_poster"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            app:layout_constraintDimensionRatio="true"
             app:layout_constraintStart_toStartOf="@id/left_edge"
             app:layout_constraintEnd_toEndOf="@id/right_edge"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintDimensionRatio="true"
-            tools:src="@tools:sample/avatars"/>
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/movies_poster" />
 
         <ImageView
             android:id="@+id/back"
@@ -43,7 +44,8 @@
             android:layout_marginTop="59dp"
             android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back_button" />
 
         <TextView
             android:id="@+id/movie_name"
@@ -90,49 +92,22 @@
             android:orientation="horizontal"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
-            app:layout_constraintEnd_toEndOf="@+id/right_edge"
             app:layout_constraintTop_toBottomOf="@+id/genre">
-
-            <ImageView
-                android:id="@+id/star_1"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_star_filled"/>
-            <ImageView
-                android:id="@+id/star_2"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_star_filled"/>
-            <ImageView
-                android:id="@+id/star_3"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_star_filled"/>
-            <ImageView
-                android:id="@+id/star_4"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_star_filled"/>
-
-            <ImageView
-                android:id="@+id/star_5"
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_star_empty"/>
-            <TextView
-                android:id="@+id/reviews_stats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:textColor="@color/grey"
-                tools:text="125 REVIEWS"
-                />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/reviews_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9sp"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/roboto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/reviews_layout"
+            app:layout_constraintTop_toTopOf="@+id/reviews_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/reviews_layout"
+            tools:text="125 REVIEWS"
+            />
 
         <TextView
             android:id="@+id/storyline_header"
@@ -142,10 +117,10 @@
             android:paddingTop="24sp"
             android:textColor="@color/white"
             android:textSize="14sp"
+            android:text="@string/storyline"
             app:layout_constraintStart_toStartOf="@+id/left_edge"
             app:layout_constraintEnd_toStartOf="@+id/right_edge"
             app:layout_constraintTop_toBottomOf="@+id/reviews_layout"
-            tools:text="@string/storyline"
             />
 
         <TextView
@@ -153,7 +128,6 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:paddingTop="24sp"
             android:textColor="@color/grey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/left_edge"

@@ -21,7 +21,7 @@ class StarRatingHelpers {
         fun createStarView(context: Context, reviewLayout: LinearLayout, layoutValue: Int) : ImageView {
             val star = ImageView(context)
 
-            val layoutValueWithDensity = (layoutValue * context.resources.displayMetrics.density).toInt();
+            val layoutValueWithDensity = (layoutValue * context.resources.displayMetrics.density).toInt()
             val layoutParams = ViewGroup.LayoutParams(layoutValueWithDensity, layoutValueWithDensity)
 
             reviewLayout.addView(star, layoutParams)

@@ -6,14 +6,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bumptech.glide.request.RequestOptions
 import com.example.homeworks.data.Movie
 
 
 class MovieViewHolder(itemView: View, var listener: FragmentMoviesList.MovieDetailsListener) : RecyclerView.ViewHolder(
     itemView) {
-
-    private val reviewLayout = itemView.findViewById<LinearLayout>(R.id.reviews_layout)
 
     private val nameView = itemView.findViewById<TextView>(R.id.movie_name)
     private val genreView = itemView.findViewById<TextView>(R.id.genre)
@@ -23,6 +20,7 @@ class MovieViewHolder(itemView: View, var listener: FragmentMoviesList.MovieDeta
     private val ageRatingView = itemView.findViewById<ImageView>(R.id.age_restriction)
     private val mainPosterView = itemView.findViewById<ImageView>(R.id.main_poster)
 
+    private val reviewLayout = itemView.findViewById<LinearLayout>(R.id.reviews_layout)
     private val starRatingViews = Array(5) { StarRatingHelpers.createStarView(itemView.context, reviewLayout, 8) }
 
     fun renderMovieSummary(movie: Movie) {

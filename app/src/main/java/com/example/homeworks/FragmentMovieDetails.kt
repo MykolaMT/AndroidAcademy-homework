@@ -6,19 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import coil.load
 import com.example.homeworks.data.Movie
 import kotlinx.coroutines.*
 
+
 class FragmentMovieDetails() : Fragment() {
-    private val imageOption = RequestOptions()
-        .placeholder(R.drawable.ic_avatar_placeholder)
-        .fallback(R.drawable.ic_avatar_error)
-        .circleCrop()
 
     private var listener: NavigateBackListener? = null
 
@@ -28,7 +25,7 @@ class FragmentMovieDetails() : Fragment() {
         println("CoroutineExceptionHandler got $exception in $coroutineContext")
     }
 
-    private var scope = CoroutineScope(
+    private val scope = CoroutineScope(
         Dispatchers.Default +
                 Job() +
                 exceptionHandler
@@ -51,13 +48,15 @@ class FragmentMovieDetails() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var actorsView = view.findViewById<RecyclerView>(R.id.actors_view)
+        val actorsView = view.findViewById<RecyclerView>(R.id.actors_view)
         actorsView.adapter = ActorsAdapter()
 
         scope.launch {
             val movie = MoviesDataSource().getMovies(requireContext()).single { it.id == movieId }
 
-            renderMovieDetails(view, movie)
+            activity?.runOnUiThread {
+                renderMovieDetails(view, movie)
+            }
 
             withContext(Dispatchers.Main) {
                 with(actorsView.adapter as ActorsAdapter) {
@@ -69,25 +68,30 @@ class FragmentMovieDetails() : Fragment() {
 
     private fun renderMovieDetails(view: View, movie: Movie) {
         with(view) {
-            var nameView = findViewById<TextView>(R.id.movie_name)
-            var genreView = findViewById<TextView>(R.id.genre)
-            var reviewStatsView = findViewById<TextView>(R.id.reviews_stats)
-            var storyLineView = findViewById<TextView>(R.id.storyline)
+            val nameView = findViewById<TextView>(R.id.movie_name)
+            val genreView = findViewById<TextView>(R.id.genre)
+            val reviewStatsView = findViewById<TextView>(R.id.reviews_stats)
+            val storyLineView = findViewById<TextView>(R.id.storyline)
+            val ageRestrictionView = findViewById<TextView>(R.id.age_restriction)
+            val detailsPosterView = findViewById<ImageView>(R.id.backdrop_poster)
 
-            var ageRatingView = findViewById<TextView>(R.id.age_restriction)
-            var detailsPosterView = findViewById<ImageView>(R.id.backdrop_poster)
+            val reviewLayout = findViewById<LinearLayout>(R.id.reviews_layout)
+            val starRatingViews = Array(5) {
+                StarRatingHelpers.createStarView(context,
+                    reviewLayout,
+                    8)
+            }
+
+            detailsPosterView.load(movie.backdrop)
 
             nameView.text = movie.title
             genreView.text = movie.genres.joinToString(", ") { it.name }
-            reviewStatsView.text = getString(R.string.review_number, movie.numberOfRatings)
-
             storyLineView.text = movie.overview
-            ageRatingView.text = getString(R.string.minimum_age, movie.minimumAge)
 
-            Glide.with(view.context)
-                .load(movie.backdrop)
-                .apply(imageOption)
-                .into(detailsPosterView)
+            reviewStatsView.text = getString(R.string.review_number, movie.numberOfRatings)
+            ageRestrictionView.text = getString(R.string.minimal_age, movie.minimumAge)
+
+            starRatingViews.setStarRating(movie.ratings)
         }
     }
 

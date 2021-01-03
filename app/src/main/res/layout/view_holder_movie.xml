@@ -86,10 +86,10 @@
             android:textColor="@color/grey"
             android:fontFamily="@font/roboto"
             android:textSize="8sp"
-            tools:text="125 REVIEWS"
             app:layout_constraintStart_toEndOf="@+id/reviews_layout"
             app:layout_constraintTop_toTopOf="@+id/reviews_layout"
             app:layout_constraintBottom_toBottomOf="@+id/reviews_layout"
+            tools:text="125 REVIEWS"
             />
 
         <TextView

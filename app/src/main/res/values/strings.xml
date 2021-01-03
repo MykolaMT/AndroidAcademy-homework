@@ -34,6 +34,10 @@
     <string name="like_icon">like icon</string>
     <string name="background_mask">background mask</string>
     <string name="review_number">%1$d REVIEWS</string>
-    <string name="minimum_age">%1$d+</string>
+    <string name="minimal_age">%1$d+</string>
     <string name="runtime">%1$d MIN</string>
+    <string name="movies_poster">Movies poster</string>
+    <string name="back_button">back button</string>
+    <string name="movies_list_header">movies list header</string>
+    <string name="actor_picture">actor picture</string>
 </resources>

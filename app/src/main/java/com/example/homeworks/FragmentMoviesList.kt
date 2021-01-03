@@ -34,10 +34,10 @@ class FragmentMoviesList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var moviesView = view.findViewById<RecyclerView>(R.id.movies_view)
+        val moviesView = view.findViewById<RecyclerView>(R.id.movies_view)
         moviesView.adapter = MoviesAdapter(object : MovieDetailsListener {
-            override fun openMovie(item: Movie) {
-                listener?.openMovie(item)
+            override fun openMovie(movie: Movie) {
+                listener?.openMovie(movie)
             }
         })
 

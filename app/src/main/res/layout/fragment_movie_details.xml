@@ -26,10 +26,13 @@
 
         <ImageView
             android:id="@+id/backdrop_poster"
-            android:layout_width="375dp"
-            android:layout_height="298dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="@id/left_edge"
+            app:layout_constraintEnd_toEndOf="@id/right_edge"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="true"
             tools:src="@tools:sample/avatars"/>
 
         <ImageView

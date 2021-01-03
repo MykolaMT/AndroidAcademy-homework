@@ -1,10 +1,7 @@
 package com.example.homeworks
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.transition.Transition
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.CustomTarget
 import com.example.homeworks.data.Movie
 import kotlinx.coroutines.*
 
@@ -83,9 +79,10 @@ class FragmentMovieDetails() : Fragment() {
 
             nameView.text = movie.title
             genreView.text = movie.genres.joinToString(", ") { it.name }
-            reviewStatsView.text = "${movie.numberOfRatings} REVIEWS"
+            reviewStatsView.text = getString(R.string.review_number, movie.numberOfRatings)
+
             storyLineView.text = movie.overview
-            ageRatingView.text = "${movie.minimumAge}+"
+            ageRatingView.text = getString(R.string.minimum_age, movie.minimumAge)
 
             Glide.with(view.context)
                 .load(movie.backdrop)

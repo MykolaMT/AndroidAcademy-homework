@@ -27,11 +27,11 @@
 
         <ImageView
             android:id="@+id/main_poster"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="248dp"
             android:src="@drawable/avengers_poster"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/bg"
+            app:layout_constraintEnd_toEndOf="@+id/bg"
             app:layout_constraintTop_toTopOf="@+id/bg"
             android:contentDescription="@string/movie_main_poster" />
 

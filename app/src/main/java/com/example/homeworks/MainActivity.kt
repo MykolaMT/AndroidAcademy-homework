@@ -2,6 +2,7 @@ package com.example.homeworks
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.homeworks.data.Movie
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieDetailsListener {
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieDetailsListene
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().apply {
-                add(R.id.persistent_container, FragmentMoviesList())
+                add(R.id.root_container, FragmentMoviesList())
                 commit()
             }
         }
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.MovieDetailsListene
 
     override fun openMovie(movie: Movie) {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.persistent_container, FragmentMoviesDetails(movie))
+            replace(R.id.persistent_container, FragmentMovieDetails.newInstance(movie.id))
             addToBackStack(null)
             commit()
         }

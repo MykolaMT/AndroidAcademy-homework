@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/dark_dark_grey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_edge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_edge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <ImageView
+            android:id="@+id/backdrop_poster"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintDimensionRatio="true"
+            app:layout_constraintStart_toStartOf="@id/left_edge"
+            app:layout_constraintEnd_toEndOf="@id/right_edge"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/movies_poster" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="59dp"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back_button" />
+
+        <TextView
+            android:id="@+id/movie_name"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            app:layout_constraintEnd_toEndOf="@+id/right_edge"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_poster"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_poster"
+            tools:text="@string/film_name"/>
+
+        <TextView
+            android:id="@+id/age_restriction"
+            android:layout_width="20sp"
+            android:layout_height="14sp"
+            android:layout_marginBottom="8sp"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/movie_name"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            tools:text="13+"
+            />
+
+        <TextView
+            android:id="@+id/genre"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4sp"
+            android:textSize="14sp"
+            android:textColor="#FF3466"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            app:layout_constraintEnd_toEndOf="@+id/right_edge"
+            app:layout_constraintTop_toBottomOf="@+id/movie_name"
+            tools:text="@string/tags"
+            />
+
+        <LinearLayout
+            android:id="@+id/reviews_layout"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            app:layout_constraintTop_toBottomOf="@+id/genre">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/reviews_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9sp"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/roboto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/reviews_layout"
+            app:layout_constraintTop_toTopOf="@+id/reviews_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/reviews_layout"
+            tools:text="125 REVIEWS"
+            />
+
+        <TextView
+            android:id="@+id/storyline_header"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingTop="24sp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:text="@string/storyline"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            app:layout_constraintEnd_toStartOf="@+id/right_edge"
+            app:layout_constraintTop_toBottomOf="@+id/reviews_layout"
+            />
+
+        <TextView
+            android:id="@+id/storyline"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            app:layout_constraintEnd_toStartOf="@+id/right_edge"
+            app:layout_constraintTop_toBottomOf="@+id/storyline_header"
+            tools:text="@string/description"
+            />
+
+        <TextView
+            android:id="@+id/cast_header"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingTop="24sp"
+            android:text="@string/cast"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            app:layout_constraintEnd_toStartOf="@+id/right_edge"
+            app:layout_constraintTop_toBottomOf="@+id/storyline" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/actors_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/cast_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/right_edge"
+            app:layout_constraintStart_toStartOf="@+id/left_edge"
+            tools:itemCount="5"
+            tools:listitem="@layout/view_holder_actor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -4,6 +4,8 @@
     package="com.example.homeworks"
     >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:theme="@style/Theme.Homeworks"
         android:allowBackup="true"

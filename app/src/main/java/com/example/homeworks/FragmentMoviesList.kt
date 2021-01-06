@@ -5,14 +5,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.example.homeworks.data.Movie
+import kotlinx.coroutines.*
 
 class FragmentMoviesList : Fragment() {
 
     private var listener: MovieDetailsListener? = null
-    private var movies: List<Movie> = MoviesDataSource().getMovies()
+
+    private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, exception ->
+        println("CoroutineExceptionHandler got $exception in $coroutineContext")
+    }
+
+    private var scope = CoroutineScope(
+        Dispatchers.Default +
+                Job() +
+                exceptionHandler
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,11 +34,21 @@ class FragmentMoviesList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val grid = view.findViewById<GridView>(R.id.movies_summary)
-        grid.adapter = MovieAdapter(context, movies)
+        val moviesView = view.findViewById<RecyclerView>(R.id.movies_view)
+        moviesView.adapter = MoviesAdapter(object : MovieDetailsListener {
+            override fun openMovie(movie: Movie) {
+                listener?.openMovie(movie)
+            }
+        })
 
-        grid.setOnItemClickListener { _, _, position, _ ->
-            listener?.openMovie(movies[position])
+        scope.launch {
+            val movies = MoviesDataSource().getMovies(requireContext())
+
+            withContext(Dispatchers.Main) {
+                    with(moviesView.adapter as MoviesAdapter) {
+                    bindMovies(movies)
+                }
+            }
         }
     }
 
@@ -48,3 +68,4 @@ class FragmentMoviesList : Fragment() {
         fun openMovie(movie: Movie)
     }
 }
+

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#191926"
+    android:layout_width="166dp"
+    android:layout_height="wrap_content"
+    android:background="@color/dark_dark_grey"
     app:layout_constraintBottom_toTopOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -22,16 +22,18 @@
             android:background="@drawable/ic_bg"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/background" />
 
         <ImageView
             android:id="@+id/main_poster"
-            android:layout_width="166dp"
+            android:layout_width="0dp"
             android:layout_height="248dp"
-            android:background="@drawable/avengers_poster"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bg" />
+            android:src="@drawable/avengers_poster"
+            app:layout_constraintStart_toStartOf="@+id/bg"
+            app:layout_constraintEnd_toEndOf="@+id/bg"
+            app:layout_constraintTop_toTopOf="@+id/bg"
+            android:contentDescription="@string/movie_main_poster" />
 
         <ImageView
             android:id="@+id/age_restriction"
@@ -41,7 +43,8 @@
             android:layout_marginStart="6dp"
             android:background="@drawable/ic_age_13"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/main_poster" />
+            app:layout_constraintTop_toTopOf="@+id/main_poster"
+            android:contentDescription="@string/age_restriction" />
 
         <ImageView
             android:id="@+id/like"
@@ -51,13 +54,15 @@
             android:layout_marginEnd="6dp"
             android:background="@drawable/ic_like"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/main_poster" />
+            app:layout_constraintTop_toTopOf="@+id/main_poster"
+            android:contentDescription="@string/like_icon" />
 
         <ImageView
             android:id="@+id/mask"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_mask"
+            android:contentDescription="@string/background_mask"
             app:layout_constraintEnd_toEndOf="@+id/main_poster"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/main_poster"
@@ -65,53 +70,27 @@
 
         <LinearLayout
             android:id="@+id/reviews_layout"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="16sp"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/mask">
-
-            <ImageView
-                android:id="@+id/star_1"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:layout_marginStart="6dp"
-                android:src="@drawable/ic_star_filled"/>
-            <ImageView
-                android:id="@+id/star_2"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:src="@drawable/ic_star_filled"/>
-            <ImageView
-                android:id="@+id/star_3"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:src="@drawable/ic_star_filled"/>
-            <ImageView
-                android:id="@+id/star_4"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:src="@drawable/ic_star_filled"/>
-
-            <ImageView
-                android:id="@+id/star_5"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:src="@drawable/ic_star_filled"/>
-            <TextView
-                android:id="@+id/reviews_stats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6sp"
-                android:textColor="@color/grey"
-                android:fontFamily="@font/roboto"
-                android:textSize="8sp"
-                android:lineHeight="12sp"
-                android:text="125 REVIEWS"
-                />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/reviews_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6sp"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/roboto"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/reviews_layout"
+            app:layout_constraintTop_toTopOf="@+id/reviews_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/reviews_layout"
+            tools:text="125 REVIEWS"
+            />
 
         <TextView
             android:id="@+id/genre"
@@ -121,7 +100,6 @@
             android:layout_marginBottom="2sp"
             android:textColor="@color/red"
             android:fontFamily="@font/roboto"
-            android:textFontWeight="300"
             android:textSize="8sp"
             android:text="@string/action_adventure_drama"
             app:layout_constraintEnd_toEndOf="@+id/main_poster"
@@ -136,9 +114,7 @@
             android:layout_marginBottom="20sp"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto"
-            android:textFontWeight="900"
             android:textSize="14sp"
-            android:lineHeight="20sp"
             android:text="@string/avengers_end_game"
             app:layout_constraintEnd_toEndOf="@+id/main_poster"
             app:layout_constraintStart_toStartOf="@+id/main_poster"
@@ -150,13 +126,10 @@
             android:layout_height="wrap_content"
             android:textColor="@color/dark_grey"
             android:fontFamily="@font/roboto"
-            android:textFontWeight="900"
             android:textSize="8sp"
-            android:lineHeight="12sp"
-            android:text="137 min"
+            tools:text="137 min"
             app:layout_constraintStart_toStartOf="@+id/movie_name"
             app:layout_constraintTop_toBottomOf="@+id/movie_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

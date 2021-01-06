@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 
 class FragmentMoviesList : Fragment() {
 
-    private var movieDetailsLink: ImageView? = null
-
     private var listener: MovieDetailsListener? = null
+    private var movies: List<Movie> = MoviesDataSource().getMovies()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,11 +20,15 @@ class FragmentMoviesList : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_movies_list, container, false)
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        movieDetailsLink = view.findViewById<ImageView>(R.id.main_poster).apply {
-            setOnClickListener { listener?.openMovie() }
+        val grid = view.findViewById<GridView>(R.id.movies_summary)
+        grid.adapter = MovieAdapter(context, movies)
+
+        grid.setOnItemClickListener { _, _, position, _ ->
+            listener?.openMovie(movies[position])
         }
     }
 
@@ -41,6 +45,6 @@ class FragmentMoviesList : Fragment() {
     }
 
     interface MovieDetailsListener{
-        fun openMovie()
+        fun openMovie(movie: Movie)
     }
 }
